@@ -1,16 +1,14 @@
 /*
 * API File
 */
-
 const http = require('http');
 const https = require('https');
 const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
-const config = require('./config');
+const config = require('./lib/config');
 const fs = require('fs');
 const handlers = require('./lib/handlers');
-
-const _data = require('./lib/data');
+const helpers = require('./lib/helpers');
 
 //HTTP SERVER
 const httpServer = http.createServer((req, res) => {
@@ -71,7 +69,7 @@ const unifiedServer = (req, res) => {
       queryStringObject,
       method,
       headers,
-      payload: buffer
+      payload: helpers.parseJsonToObject(buffer)
     };
 
     //route the request to the handler specifed request
