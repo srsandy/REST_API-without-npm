@@ -10,6 +10,10 @@ const fs = require('fs');
 const handlers = require('./lib/handlers');
 const helpers = require('./lib/helpers');
 
+helpers.sendTwilloSms('7077620252', 'hi', err => {
+  console.log(err);
+});
+
 //HTTP SERVER
 const httpServer = http.createServer((req, res) => {
   unifiedServer(req, res);
